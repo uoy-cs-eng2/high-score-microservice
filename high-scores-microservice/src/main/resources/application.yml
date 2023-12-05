@@ -1,0 +1,21 @@
+micronaut:
+  application:
+    name: highScores
+datasources:
+  default:
+    driver-class-name: org.mariadb.jdbc.Driver
+    db-type: mariadb
+    dialect: MYSQL
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+    entity-scan:
+      packages:
+        - uk.ac.york.eng2.highscores.domain
+netty:
+  default:
+    allocator:
+      max-order: 3
