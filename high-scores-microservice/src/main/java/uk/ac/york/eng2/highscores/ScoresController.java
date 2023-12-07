@@ -16,6 +16,7 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.QueryValue;
 import jakarta.inject.Inject;
 import uk.ac.york.eng2.highscores.domain.Score;
+import uk.ac.york.eng2.highscores.dto.ScoreSubmissionDTO;
 import uk.ac.york.eng2.highscores.repositories.ScoresRepository;
 
 @Controller("/scores")
@@ -30,8 +31,12 @@ public class ScoresController {
     }
 
     @Post("/")
-    public HttpResponse<Void> postScore(@Body Score score) {
+    public HttpResponse<Void> postScore(@Body ScoreSubmissionDTO scoreSubmission) {
+        Score score = new Score();
+        score.setUser(scoreSubmission.getUser());
+        score.setScore(scoreSubmission.getScore());
         repo.save(score);
+
         return HttpResponse.created(URI.create("/" + score.getId()));
     }
 

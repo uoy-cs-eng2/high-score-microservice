@@ -8,3 +8,4 @@ curl "http://localhost:8080/scores/top?user=antonio&n=2"
 
 echo -e "\n\nTop 5 overall\n---"
 curl "http://localhost:8080/scores/top?n=5"
+echo ""
